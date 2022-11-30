@@ -39,4 +39,8 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+
+html {
+  background-color: #000000;
+}
 </style>
