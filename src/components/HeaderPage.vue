@@ -35,4 +35,13 @@ name: 'HeaderPage'
 img {
     width: 100px;
 }
+
+img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+a {
+  margin: .5rem;
+}
 </style>
