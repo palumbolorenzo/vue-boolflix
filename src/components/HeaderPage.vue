@@ -1,7 +1,18 @@
 <template>
   <div>
     <div class="header">
-        <img src="@/img/Netflix_icon.svg.png" alt="">
+      <div>
+        <img
+          src="@/img/Netflix_icon.svg.png"
+          alt=""
+        >
+      </div>
+      <div>
+        <input type="text">
+        <a class="btn btn-dark">
+          Search
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -17,6 +28,8 @@ name: 'HeaderPage'
     background-color: #000000;
     padding: .5rem;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 img {
