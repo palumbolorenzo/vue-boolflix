@@ -3,15 +3,22 @@
     <div class="header">
       <div>
         <img
-          src="@/img/Netflix_icon.svg.png"
+          src="@/img/boolflix.png"
           alt=""
         >
       </div>
       <div>
-        <input type="text">
-        <a class="btn btn-dark">
-          Search
-        </a>
+        <form @submit.prevent="$emit('changeQuery', queryString)">
+          <input
+            id="query"
+            v-model="queryString"
+            type="text"
+            name="query"
+          >
+          <a class="btn btn-dark">
+            Search
+          </a>
+        </form>
       </div>
     </div>
   </div>
@@ -19,14 +26,19 @@
 
 <script>
 export default {
-name: 'HeaderPage'
+name: 'HeaderPage',
+data() {
+  return {
+    queryString: '',
+  }
+}
 }
 </script>
 
 <style lang="scss" scoped>
 .header {
     background-color: #000000;
-    padding: .5rem;
+    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -39,6 +51,7 @@ img {
 img:hover {
   transform: scale(1.05);
   cursor: pointer;
+  transition-duration: .5s;
 }
 
 a {

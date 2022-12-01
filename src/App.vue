@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <HeaderPage />
-    <MainPage />
+    <HeaderPage @changeQuery="search" />
+    <MainPage
+      :arr-movies="arrMovies"
+      :arr-tv="arrTv"
+    />
   </div>
 </template>
 
@@ -18,18 +21,41 @@ export default {
   },
   data() {
     return {
-      urlApi: 'https://flynn.boolean.careers/exercises/api/array/music',
-      movies: null,
+      urlApi: 'https://api.themoviedb.org/3',
+      apiKey: '8f0095fdcb4465f6313c3c6e71d9cde1',
+      resultsLanguage: 'it-IT',
+      arrMovies: [],
+      arrTv: [],
     };
   },
-  created() {
-    axios.get(this.urlApi)
-      .then((axiosResponse) => {
-        console.log(axiosResponse);
-        this.discs = axiosResponse.data.response;
-      });
+  methods: {
+    search(queryString) {
+      axios.get(`${this.urlApi}/search/movie`, {
+        params: {
+          api_key: this.apiKey,
+          query: queryString,
+          language: this.resultsLanguage,
+        }
+      })
+        .then((responseAxios) => {
+          this.arrMovies = responseAxios.data.results
+          console.log(this.arrMovies)
+        });
+
+      axios.get(`${this.urlApi}/search/tv`, {
+        params: {
+          api_key: this.apiKey,
+          query: queryString,
+          language: this.resultsLanguage,
+        }
+      })
+        .then((responseAxios) => {
+          this.arrTv = responseAxios.data.results
+          console.log(this.arrTv)
+        });
+    },
   },
-}
+};
 </script>
 
 <style lang="scss">
@@ -41,6 +67,6 @@ export default {
 }
 
 html {
-  background-color: #000000;
+  background-color: #101010;
 }
 </style>
