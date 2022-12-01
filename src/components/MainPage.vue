@@ -120,8 +120,8 @@ li {
   border-radius: 1rem;
 }
 
-.movie-card:hover .movie-above {
-	filter: brightness(50%);
+.movie-above:hover {
+  filter: brightness(50%);
   cursor: pointer;
 }
 
