@@ -1,41 +1,67 @@
 <template>
-  <div>
+  <div class="background">
     <!-- <img
       src="@/img/Netflix-Background-prueba-1.jpeg"
       class="background"
     > -->
-    <h1>MOVIES</h1>
+    <p class="title text-white text-uppercase">
+      movies
+    </p>
     <div class="movies-container">
       <ul
         v-for="objMovie in arrMovies"
         :key="objMovie.id"
         class="movie-card"
       >
-        <li>
-          <img
-            :src="objMovie.poster-path"
-            alt="movie-pic"
-          >
-        </li> 
-        <li>
+        <img
+          :src="`https://image.tmdb.org/t/p/w300${objMovie.poster_path}`"
+          alt="movie-pic"
+          class="movie-above"
+        >
+         
+        <li class="text-white">
           <h6>Titolo: </h6>{{ objMovie.title }}
-        </li>  
-        <li><h6>Titolo Originale: </h6>{{ objMovie.original_title }}</li>  
-        <li><h6>Lingua: </h6>{{ objMovie.original_language }}</li>  
-        <li><h6>Voto: </h6>{{ objMovie.vote_average }}</li>  
+        </li> 
+        <li class="text-white">
+          <h6>Titolo Originale: </h6>{{ objMovie.original_title }}
+        </li>
+        <li class="text-white">
+          <h6>Lingua: </h6>{{ objMovie.original_language }}
+        </li>
+        <li class="text-white">
+          <h6>Voto: </h6>{{ objMovie.vote_average }}
+        </li>
       </ul>
     </div>
-    <h1>TV SERIES</h1>
-    <ul
-      v-for="objTv in arrTv"
-      :key="objTv.id"
-      class="movie-card"
-    >
-      <li>{{ objTv.name }}</li>  
-      <li>{{ objTv.original_name }}</li>  
-      <li>{{ objTv.original_language }}</li>  
-      <li>{{ objTv.vote_average }}</li>  
-    </ul>  
+    <p class="title text-white text-uppercase">
+      tv series
+    </p>
+    <div class="movies-container">
+      <ul
+        v-for="objTv in arrTv"
+        :key="objTv.id"
+        class="movie-card"
+      >
+        <img
+          :src="`https://image.tmdb.org/t/p/w300${objTv.poster_path}`"
+          alt="movie-pic"
+          class="movie-above"
+        >
+
+        <li class="text-white">
+          <h6>Titolo: </h6>{{ objTv.name }}
+        </li> 
+        <li class="text-white">
+          <h6>Titolo Originale: </h6>{{ objTv.original_name }}
+        </li>
+        <li class="text-white">
+          <h6>Lingua: </h6>{{ objTv.original_language }}
+        </li>
+        <li class="text-white">
+          <h6>Voto: </h6>{{ objTv.vote_average }}
+        </li>
+      </ul> 
+    </div> 
     <FilmsList />
     <SeriesList />
   </div>
@@ -59,6 +85,12 @@ props: {
 </script>
 
 <style lang="scss" scoped>
+.background {
+  background-image: url('@/img/image.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
 img {
   width: 100%;
 }
@@ -67,28 +99,29 @@ li {
   list-style-type: none;
 }
 
-.background {
-  position: relative;
+.title {
+  padding: 1.5rem 5rem;
 }
 
 .movies-container {
   margin: 0 auto;
-  width: 1000px;
+  width: 1100px;
   overflow: scroll;
   display: flex;
   gap: 1rem;
 }
 .movie-card {
-  min-width: 200px;
-  min-height: 400px;
-  background-color: #3c3c3c;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 300px;
 }
 
-.movie-card:hover {
-  opacity: .8;
+.movie-above {
+  width: 300px;
+  height: 450px;
+  border-radius: 1rem;
+}
+
+.movie-card:hover .movie-above {
+	filter: brightness(50%);
   cursor: pointer;
 }
 
