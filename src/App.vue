@@ -67,6 +67,6 @@ export default {
 }
 
 html {
-  background-color: #101010;
+  background-color: #000000;
 }
 </style>

@@ -4,9 +4,9 @@
       src="@/img/Netflix-Background-prueba-1.jpeg"
       class="background"
     > -->
-    <p class="title text-white text-uppercase">
+    <div class="title text-white text-uppercase">
       movies
-    </p>
+    </div>
     <div class="movies-container">
       <ul
         v-for="objMovie in arrMovies"
@@ -33,9 +33,9 @@
         </li>
       </ul>
     </div>
-    <p class="title text-white text-uppercase">
+    <div class="title text-white text-uppercase">
       tv series
-    </p>
+    </div>
     <div class="movies-container">
       <ul
         v-for="objTv in arrTv"
