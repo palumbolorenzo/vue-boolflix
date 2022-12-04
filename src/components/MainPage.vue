@@ -8,7 +8,7 @@
       movies
     </div>
     <div class="movies-container">
-      <ul
+      <div
         v-for="objMovie in arrMovies"
         :key="objMovie.id"
         class="movie-card"
@@ -19,25 +19,27 @@
           class="movie-above"
         >
          
-        <li class="text-white">
-          <h6>Titolo: </h6>{{ objMovie.title }}
-        </li> 
-        <li class="text-white">
-          <h6>Titolo Originale: </h6>{{ objMovie.original_title }}
-        </li>
-        <li class="text-white">
-          <h6>Lingua: </h6>{{ objMovie.original_language }}
-        </li>
-        <li class="text-white">
-          <h6>Voto: </h6>{{ objMovie.vote_average }}
-        </li>
-      </ul>
+        <ul class="card-data">
+          <li class="text-white">
+            <h6>Titolo: </h6>{{ objMovie.title }}
+          </li> 
+          <li class="text-white">
+            <h6>Titolo Originale: </h6>{{ objMovie.original_title }}
+          </li>
+          <li class="text-white">
+            <h6>Lingua: </h6>{{ objMovie.original_language }}
+          </li>
+          <li class="text-white">
+            <h6>Voto: </h6>{{ objMovie.vote_average }}
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="title text-white text-uppercase">
       tv series
     </div>
     <div class="movies-container">
-      <ul
+      <div
         v-for="objTv in arrTv"
         :key="objTv.id"
         class="movie-card"
@@ -48,19 +50,21 @@
           class="movie-above"
         >
 
-        <li class="text-white">
-          <h6>Titolo: </h6>{{ objTv.name }}
-        </li> 
-        <li class="text-white">
-          <h6>Titolo Originale: </h6>{{ objTv.original_name }}
-        </li>
-        <li class="text-white">
-          <h6>Lingua: </h6>{{ objTv.original_language }}
-        </li>
-        <li class="text-white">
-          <h6>Voto: </h6>{{ objTv.vote_average }}
-        </li>
-      </ul> 
+        <ul class="card-data"> 
+          <li class="text-white">
+            <h6>Titolo: </h6>{{ objTv.name }}
+          </li> 
+          <li class="text-white">
+            <h6>Titolo Originale: </h6>{{ objTv.original_name }}
+          </li>
+          <li class="text-white">
+            <h6>Lingua: </h6>{{ objTv.original_language }}
+          </li>
+          <li class="text-white">
+            <h6>Voto: </h6>{{ objTv.vote_average }}
+          </li>
+        </ul>
+      </div> 
     </div> 
     <FilmsList />
     <SeriesList />
@@ -112,6 +116,20 @@ li {
 }
 .movie-card {
   width: 300px;
+  position: relative;
+}
+
+.card-data {
+  position: absolute;
+  bottom: 100px;
+  width: 300px;
+  height: 150px;
+  padding: 2rem 0;
+  opacity: 0;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .movie-above {
@@ -127,5 +145,10 @@ li {
 
 h6 {
   display: inline;
+}
+
+.movie-card:hover .card-data {
+  opacity: 1;
+  cursor: pointer;
 }
 </style>
